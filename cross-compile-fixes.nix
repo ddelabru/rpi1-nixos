@@ -15,6 +15,10 @@
       # with empty directories
       efibootmgr = super.emptyDirectory;
       efivar = super.emptyDirectory;
+
+      # The Linux kernel fixes here are adapted from a snippet by Rodney
+      # Lorrimar on the NixOS Discourse forum:
+      # https://discourse.nixos.org/t/nixos-on-raspberry-pi-zero-w/38018/34
       linuxKernel = super.linuxKernel // {
         packages = super.linuxKernel.packages // {
           # Disable drivers which fail to build under nixpkgs
